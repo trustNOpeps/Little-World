@@ -20,7 +20,7 @@ Open `index.html` through a local static server. Because it uses JavaScript ES m
 python3 -m http.server 8000
 ```
 
-Then open `http://localhost:8000/apps/little-world/` if running from the repository root (or the appropriate local path).
+Then open `http://localhost:8000/` when running the server from this standalone repository root.
 
 Run pure logic tests with `node --test core.test.mjs` from the repository root.
 
