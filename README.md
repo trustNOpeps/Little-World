@@ -24,14 +24,8 @@ Then open `http://localhost:8000/` when running the server from this standalone 
 
 Run pure logic tests with `node --test core.test.mjs` from the repository root.
 
-## Honesty about the agents
+## Work orders
 
-The coworkers are **scripted simulations**, not OpenClaw, Hermes, or autonomous AI models. Their tasks are small deterministic state transitions. They cannot access real files, web browsers, accounts, money, or third-party services. Fictional coins have no real-world value. Real agent integrations would require a backend, authorization, permissions, secrets management and explicit user approval.
+The local AI workflow downloads Qwen2.5-0.5B-Instruct on demand (approximately 786 MB of model weights). A module worker uses Transformers.js and WebAssembly. Nova scopes the brief, Byte plans the work, and Miso drafts the deliverable using the earlier sections. Each completed section is saved locally. Stop or reset terminates the worker. Reloading the page interrupts inference.
 
-## Privacy & persistence
-
-Local progress is stored under a browser `localStorage` key. The export button downloads a JSON snapshot; reset only affects this application's local state. No analytics or network API calls are made by the app, although the external font service and linked demos are separate destinations.
-
-## Project context
-
-This project takes broad inspiration from cozy isometric offices and virtual agent workspaces, but its code, layout, copy and Canvas artwork are original. It does not reproduce My Virtual World's source code, proprietary assets, branding, or licensed features.
+The offline budget tool performs integer arithmetic directly in the browser. Enter one line per item as `label | quantity | unit price in IDR`. Both modes export Markdown. Simulated desk visits and their fictional rewards run separately from work orders.
