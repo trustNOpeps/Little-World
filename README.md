@@ -1,31 +1,27 @@
-# Little World — The Creative Internet Café
+# Little World
 
-An original, pixel-inspired isometric portfolio office built by **haammkaki** as a frontend learning experiment.
+A pixel office by haammkaki with nine selectable coworkers and local work reports.
 
-[Live demo on GitHub Pages](https://trustnopeps.github.io/trustNOpeps/apps/little-world/)
+[Open the office](https://trustnopeps.github.io/trustNOpeps/apps/little-world/)
 
-## What works
+## Features
 
-- Isometric office rendered entirely with Canvas 2D; no downloaded sprites or borrowed game assets.
-- Four clickable project desks linking to existing portfolio apps and anonymous studies.
-- Three simulated coworkers with time-based routines, selectable roles and user-assigned tasks.
-- Local fictional coin rewards, clock speed controls, activity feed, save/download and reset.
-- Responsive UI, keyboard-accessible project links, and no account, API key, or backend requirement.
+Nine named crew members share one state model, directory and canvas. Each can be selected and sent to a desk. Older three-person saves migrate while retaining progress. Office visits remain scripted simulations.
 
-## Run
+Work Orders defaults to instant structured briefs and checklists. Caption mode supplies editable starters, and budget mode calculates whole-rupiah line items. These modes do not use a language model. Reports can be read, downloaded as Markdown and restored after a reload.
 
-Open `index.html` through a local static server. Because it uses JavaScript ES modules, opening through `file://` may be blocked by browser security policies.
+Optional Local AI is experimental. It downloads a third-party language model and uses device memory and CPU. A 45-second inactivity watchdog and four-minute overall limit prevent indefinite loading; Stop terminates the worker. Existing reports remain downloadable if AI fails. Successful inference is device/network dependent and is not claimed by the deterministic tests.
 
-```bash
-python3 -m http.server 8000
+The Sales Desk interface has been removed. Previously stored sales data is not erased. Its old source file remains for compatibility/history, but is not imported by the app.
+
+## Run and verify
+
+Serve the portfolio at its normal `/trustNOpeps/apps/little-world/` path, or open the deployed demo. This source is mirrored into the main portfolio and uses its relative project links.
+
+```sh
+node --test core.test.mjs
+node --check app.mjs
+node --check work.mjs
 ```
 
-Then open `http://localhost:8000/` when running the server from this standalone repository root.
-
-Run pure logic tests with `node --test core.test.mjs` from the repository root.
-
-## Work orders
-
-The local AI workflow downloads Qwen2.5-0.5B-Instruct on demand (approximately 786 MB of model weights). A module worker uses Transformers.js and WebAssembly. Nova scopes the brief, Byte plans the work, and Miso drafts the deliverable using the earlier sections. Each completed section is saved locally. Stop or reset terminates the worker. Reloading the page interrupts inference.
-
-The offline budget tool performs integer arithmetic directly in the browser. Enter one line per item as `label | quantity | unit price in IDR`. Both modes export Markdown. Simulated desk visits and their fictional rewards run separately from work orders.
+Tests cover all nine crew, save migration, pause, template outputs and budget validation. No external actions, sales or payments are performed.
